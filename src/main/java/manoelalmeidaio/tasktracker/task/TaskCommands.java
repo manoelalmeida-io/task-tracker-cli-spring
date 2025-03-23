@@ -17,7 +17,7 @@ public class TaskCommands {
   private final TaskStorage taskStorage;
 
   @ShellMethod(key = "list")
-  public String list(@ShellOption(value = { "todo", "done", "in-progress" }) String status) {
+  public String list(@ShellOption String status) {
     List<Task> tasks = this.taskStorage.list();
 
     TaskStatus statusEnum = switch (status) {
