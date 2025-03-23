@@ -32,6 +32,13 @@ public class TaskStorage {
     return taskGroup.getTasks();
   }
 
+  public Task findById(Long id) {
+    TaskGroup taskGroup = retrieveTasks();
+    return taskGroup.getTasks().stream()
+        .filter(task -> task.getId().equals(id))
+        .findFirst().orElseThrow(() -> new RuntimeException("Task not found"));
+  }
+
   public Task add(Task task) {
     try {
       TaskGroup taskGroup = retrieveTasks();
@@ -40,6 +47,32 @@ public class TaskStorage {
       taskGroup.setLastGeneratedId(task.getId());
       this.objectMapper.writeValue(new File("tasks.json"), taskGroup);
       return task;
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public Task update(Task task) {
+    try {
+      TaskGroup taskGroup = retrieveTasks();
+      for (Task groupTask : taskGroup.getTasks()) {
+        if (groupTask.getId().equals(task.getId())) {
+          groupTask.setDescription(task.getDescription());
+          groupTask.setUpdatedAt(task.getUpdatedAt());
+        }
+      }
+      this.objectMapper.writeValue(new File("tasks.json"), taskGroup);
+      return task;
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public void delete(Long id) {
+    try {
+      TaskGroup taskGroup = retrieveTasks();
+      taskGroup.getTasks().removeIf(item -> item.getId().equals(id));
+      this.objectMapper.writeValue(new File("tasks.json"), taskGroup);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

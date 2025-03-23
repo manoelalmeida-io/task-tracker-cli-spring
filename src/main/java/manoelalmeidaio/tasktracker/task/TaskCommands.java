@@ -6,6 +6,7 @@ import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @ShellComponent
@@ -33,5 +34,20 @@ public class TaskCommands {
     Task task = new Task(description);
     task = this.taskStorage.add(task);
     return "Task added successfully (ID: %d)".formatted(task.getId());
+  }
+
+  @ShellMethod(key = "update")
+  public String update(@ShellOption Long id, @ShellOption String description) {
+    Task task = this.taskStorage.findById(id);
+    task.setDescription(description);
+    task.setUpdatedAt(LocalDateTime.now());
+    task = this.taskStorage.update(task);
+    return "Task updated successfully (ID: %d)".formatted(task.getId());
+  }
+
+  @ShellMethod(key = "delete")
+  public String delete(@ShellOption Long id) {
+    this.taskStorage.delete(id);
+    return "Task deleted successfully (ID: %d)".formatted(id);
   }
 }
