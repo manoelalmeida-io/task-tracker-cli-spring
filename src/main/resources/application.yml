@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: task-tracker
+  shell:
+    interactive:
+      enabled: true
