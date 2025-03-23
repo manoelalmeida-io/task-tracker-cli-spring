@@ -1,4 +1,4 @@
-package manoelalmeidaio.tasktracker.task;
+package manoelalmeidaio.tasktracker.task.model;
 
 import lombok.Getter;
 import lombok.Setter;

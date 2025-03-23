@@ -1,4 +1,4 @@
-package manoelalmeidaio.tasktracker.task;
+package manoelalmeidaio.tasktracker.task.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum TaskStatus {
 
+  TODO("TO-DO"),
   IN_PROGRESS("IN PROGRESS"),
   DONE("DONE");
 

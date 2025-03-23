@@ -1,6 +1,7 @@
 package manoelalmeidaio.tasktracker.task;
 
 import lombok.RequiredArgsConstructor;
+import manoelalmeidaio.tasktracker.task.model.Task;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;

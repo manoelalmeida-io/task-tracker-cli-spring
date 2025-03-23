@@ -2,6 +2,8 @@ package manoelalmeidaio.tasktracker.task;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import manoelalmeidaio.tasktracker.task.model.Task;
+import manoelalmeidaio.tasktracker.task.model.TaskGroup;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
