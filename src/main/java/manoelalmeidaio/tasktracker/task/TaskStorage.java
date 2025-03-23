@@ -58,6 +58,7 @@ public class TaskStorage {
       for (Task groupTask : taskGroup.getTasks()) {
         if (groupTask.getId().equals(task.getId())) {
           groupTask.setDescription(task.getDescription());
+          groupTask.setStatus(task.getStatus());
           groupTask.setUpdatedAt(task.getUpdatedAt());
         }
       }
